@@ -5,15 +5,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-7 col-sm-12 hero-text">
-                <h1>Front-End Developer 👋🏻</h1>
-                <h6>Hi, i'm <b>Adrian Maulana Rafli</b>. A Passionate Front-End <br>
-                    Developer based in Semarang, Indonesia 📍</h6>
+                <h1>{{ $aboutMe->job }}</h1>
+                <h6>Hi, i'm <b>{{ $aboutMe->name }}</b>. {!! $aboutMe->short_description !!}</h6>
                 <div class="hero-contact">
                     <a href="#">
-                        <img src="img/linkedin.png" alt="linkedin">
+                        <img src="img/contact/linkedin.png" alt="linkedin">
                     </a>
                     <a href="#">
-                        <img src="img/github.png" alt="github">
+                        <img src="img/contact/github.png" alt="github">
                     </a>
                 </div>
                 <div class="tech-stack">
@@ -42,15 +41,8 @@
             </div>
             <div class="col-lg-6 col-sm-12 about-text">
                 <h5>About Me</h5>
-                <h4>A Passionate Front-End Developer <br>
-                    based in Semarang, Indonesia 📍</h4>
-                <p>🎓 Computer Science student at Bina Nusantara University 
-                    Semarang Campus with main interest in Front-End and Web 
-                    Development. I am actively involved in various projects to expand
-                    my understanding of user interface design and responsive web 
-                    development 🧑🏻‍💻. I believe in the importance of collaboration and 
-                    community in professional growth, and I am always open to new
-                    opportunities and knowledge sharing. </p>
+                <h4>{!! $aboutMe->short_description !!}</h4>
+                <p>{{ $aboutMe->description }}</p>
             </div>
         </div>
     </div>
@@ -64,23 +56,22 @@
                 <h4>Here are some of my projects that I have created <br>
                     and am currently working on 💻</h4>
             </div>
+            @foreach ($projects as $project) 
             <div class="col-12 project-item">
                 <div class="project card shadow">
                     <div class="row">
                         <div class="col-lg-9 col-sm-9 card-img">
-                            <img src="img/project/pemilos.jpeg" alt="project pemilos">
+                            <img src="img/project/{{ $project->image }}" alt="project pemilos">
                         </div>
                         <div class="col-lg-3 col-sm-3 card-body text-center">
-                            <h5>Pemilos</h5>
-                            <p>website untuk pemilihan ketua
-                                dan wakil osis untuk SMK N 8 
-                                Semarang secara online</p>
-                            <h6>PHP &nbsp MYSQL</h6>
+                            <h5>{{ $project->name }}</h5>
+                            <p>{{ $project->description }}</p>
+                            <h6>{{ $project->tech_stack }}</h6>
                             <div class="link">
-                                <a href="#">
-                                    Code <img src="img/github.png" alt="github">
+                                <a href="{{ $project->github_link }}" target="_blank">
+                                    Code <img src="img/contact/github.png" alt="github">
                                 </a>
-                                <a href="#">
+                                <a href="{{ $project->demo_link }}" target="_blank">
                                     Demo <img src="img/opentab.png" alt="open tab">
                                 </a>
                             </div>
@@ -88,29 +79,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 project-item">
-                <div class="project card shadow">
-                    <div class="row">
-                        <div class="col-lg-9 col-sm-9 card-img">
-                            <img src="img/project/tokoku.jpeg" alt="project pemilos">
-                        </div>
-                        <div class="col-lg-3 col-sm-3 card-body text-center">
-                            <h5>Tokoku</h5>
-                            <p>Website E-Commerce Sederhana
-                                dengan fitur Registrasi, Login,  Search, Cart, dan Admin</p>
-                            <h6>PHP &nbsp MYSQL</h6>
-                            <div class="link">
-                                <a href="#">
-                                    Code <img src="img/github.png" alt="github">
-                                </a>
-                                <a href="#">
-                                    Demo <img src="img/opentab.png" alt="open tab">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
   </section>
@@ -125,36 +94,13 @@
             </div>
             <div class="col-lg-12 col-sm-12 contact-icon text-center">
                 <div class="row row-cols-3">
+                    @foreach ($contacts as $contact)
                     <div class="col">
-                        <a href="#">
-                            <img src="img/email.png" alt="email">
+                        <a href="{{ $contact->link }}" target="_blank">
+                            <img src="img/contact/{{ $contact->image }}" alt="{{ $contact->platform }}">
                         </a>
                     </div>
-                    <div class="col">
-                        <a href="#" class="col">
-                            <img src="img/linkedin.png" alt="linkedin">
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="#" class="col">
-                            <img src="img/github.png" alt="github">
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="#" class="col">
-                            <img src="img/instagram.png" alt="instagram">
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="#" class="col">
-                            <img src="img/x.png" alt="X">
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="#" class="col">
-                            <img src="img/discord.png" alt="discord">
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -10,5 +10,5 @@ class AboutMe extends Model
     use HasFactory;
 
     protected $table = 'about_mes';
-    protected $fillable = ['description'];
+    protected $fillable = ['name','job','short_description','description'];
 }

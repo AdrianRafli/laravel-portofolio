@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('about_mes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('job');
+            $table->string('short_description');
             $table->text('description');
             $table->timestamps();
         });
