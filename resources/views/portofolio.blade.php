@@ -9,10 +9,10 @@
                 <h6>Hi, i'm <b>{{ $aboutMe->name }}</b>. {!! $aboutMe->short_description !!}</h6>
                 <div class="hero-contact">
                     <a href="#">
-                        <img src="img/contact/linkedin.png" alt="linkedin">
+                        <i class="bi bi-linkedin"></i>
                     </a>
                     <a href="#">
-                        <img src="img/contact/github.png" alt="github">
+                        <i class="bi bi-github"></i>
                     </a>
                 </div>
                 <div class="tech-stack">
@@ -69,10 +69,10 @@
                             <h6>{{ $project->tech_stack }}</h6>
                             <div class="link">
                                 <a href="{{ $project->github_link }}" target="_blank">
-                                    Code <img src="img/contact/github.png" alt="github">
+                                    Code <i class="bi bi-github"></i>
                                 </a>
                                 <a href="{{ $project->demo_link }}" target="_blank">
-                                    Demo <img src="img/opentab.png" alt="open tab">
+                                    Demo <i class="bi bi-box-arrow-up-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -97,7 +97,8 @@
                     @foreach ($contacts as $contact)
                     <div class="col">
                         <a href="{{ $contact->link }}" target="_blank">
-                            <img src="img/contact/{{ $contact->image }}" alt="{{ $contact->platform }}">
+                            {{-- <img src="img/contact/{{ $contact->image }}" alt="{{ $contact->platform }}"> --}}
+                            {!! $contact->image !!}
                         </a>
                     </div>
                     @endforeach

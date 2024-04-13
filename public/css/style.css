@@ -93,12 +93,12 @@ body {
     display: flex;
     gap: 20px;
 }
-.hero-contact a img{
-    width: 40px;
+.hero-contact a i{
+    font-size: 32px;
     transition: .3s;
     opacity: .7;
 }
-.hero-contact a img:hover{
+.hero-contact a i:hover{
     transition: .3s;
     opacity: 1;
 }
@@ -137,9 +137,9 @@ body {
         font-size: 12px;
     }
     .hero-text .hero-contact {
-        gap: 10px;
+        gap: 20px;
     }
-    .hero-text .hero-contact a img{
+    .hero-text .hero-contact a i{
         width: 30px;
     }
     .tech-stack {
@@ -253,17 +253,20 @@ body {
     gap: 20px;
 }
 .card-body .link a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
     opacity: .7;
 }
 .card-body .link a:hover {
     opacity: 1;
 }
-.card-body .link a img{
-    width: 32px;
+.card-body .link a i{
+    font-size: 28px;
 }
 @media(max-width: 768px) {
     .projects {
-        margin-top: 300px;
+        /* margin-top: 100px; */
     }
     .project-text {
         padding: 0 24px;
@@ -309,8 +312,8 @@ body {
         justify-content: center;
         gap: 20px;
     }
-    .card-body .link a img{
-        width: 32px;
+    .card-body .link a i{
+        font-size: 32px;
     }
 }
 
@@ -335,13 +338,13 @@ body {
 .contact-icon a:hover{
     opacity: 1;
 }
-.contact-icon a img{
-    width: 64px;
+.contact-icon a i{
+    font-size: 52px;
 }
 
 @media(max-width: 768px) {
     .contact {
-        margin-top: 150px;
+        margin-bottom: 20px;
         height: 80vh;
     }
     .contact-icon {
@@ -350,8 +353,8 @@ body {
     .contact-icon .row {
         row-gap: 20px;
     }
-    .contact-icon a img {
-        width: 40px;
+    .contact-icon a i {
+        font-size: 38px;
     }
 }
 
