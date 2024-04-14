@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function index() {
-
-
         return view('login.index', [
             'title' => 'Login'
         ]);
@@ -27,9 +25,15 @@ class LoginController extends Controller
         }
 
         return back()->with('LoginError', 'Login Failed!');
+    }
 
-        // Note:
-        // - kurang alert login
-        // - bikin user dengan hash password
+    public function logout(Request $request) {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

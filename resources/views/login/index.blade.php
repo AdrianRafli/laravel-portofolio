@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="row justify-content-center form-signin">
-        <div class="col-md-3">
+        <div class="col-md-4">
 
             @if (session()->has('LoginError'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -15,9 +15,9 @@
             <main class="form-sign shadow">
                 <form action="/login" method="POST">
                 @csrf
-                  <h1 class="h3 mb-5 fw-normal text-center">Login</h1>
+                  <h1 class="h3 mb-5 fw-normal text-center">LOGIN</h1>
               
-                  <div class="form-floating">
+                  <div class="form-floating mb-3">
                     <input type="email" class="form-control" @error('email') is-invalid @enderror id="email" name="email" autofocus required value="{{ old('email') }}">
                     <label for="email">Email</label>
                     @error('email')
