@@ -15,6 +15,11 @@
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
           </li>
+          <li class="nav-button">
+            <a href="/login">
+              <button type="button" class="btn">Login</button>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

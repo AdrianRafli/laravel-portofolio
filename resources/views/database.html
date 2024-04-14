@@ -1,0 +1,59 @@
+App\Models\AboutMe::create([
+    'name' => 'Adrian Maulana Rafli',
+    'job' => 'Front-End Developer👋🏻',
+    'short_description' => 'A Passionate Front-End Developer based in Semarang, Indonesia 📍',
+    'description' => '🎓 Computer Science student at Bina Nusantara University Semarang Campus with main interest in Front-End and Web Development. I am actively involved in various projects to expand my understanding of user interface design and responsive web development 🧑🏻‍💻. I believe in the importance of collaboration and community in professional growth, and I am always open to new opportunities and knowledge sharing.'
+])
+
+App\Models\Project::create([
+    'image' => 'pemilos.jpeg',
+    'name' => 'Pemilos',
+    'description' => 'Website untuk pemilihan ketua dan wakil osis untuk SMK N 8 Semarang secara online',
+    'tech_stack' => 'PHP MYSQL',
+    'github_link' => '#',
+    'demo_link' => '#'
+])
+App\Models\Project::create([
+    'image' => 'tokoku.jpeg',
+    'name' => 'Tokoku',
+    'description' => 'Website E-Commerce Sederhana dengan fitur Registrasi, Login, Search, Cart, dan Admin',
+    'tech_stack' => 'PHP MYSQL',
+    'github_link' => 'https://github.com/AdrianRafli/website-tokoku',
+    'demo_link' => '#'
+])
+
+App\Models\Contact::create([
+    'image' => 'email.png',
+    'platform' => 'email',
+    'link' => 'mailto:adrianrafly20@gmail.com'
+])
+App\Models\Contact::create([
+    'image' => 'linkedin.png',
+    'platform' => 'linkedin',
+    'link' => 'https://www.linkedin.com/in/adrianrafli/'
+])
+App\Models\Contact::create([
+    'image' => 'github.png',
+    'platform' => 'github',
+    'link' => 'https://github.com/AdrianRafli'
+])
+App\Models\Contact::create([
+    'image' => 'instagram.png',
+    'platform' => 'instagram',
+    'link' => 'https://www.instagram.com/adrrfl_/'
+])
+App\Models\Contact::create([
+    'image' => 'x.png',
+    'platform' => 'x',
+    'link' => '#'
+])
+App\Models\Contact::create([
+    'image' => 'discord.png',
+    'platform' => 'discord',
+    'link' => '#'
+])
+App\Models\User::create([
+    'name' => 'Adrian Maulana Rafli',
+    'email' => 'adrianrafly19@gmail.com',
+    'password' => bcrypt('123456')
+])
