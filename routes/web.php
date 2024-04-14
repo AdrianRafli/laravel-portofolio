@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardAboutController;
+use App\Http\Controllers\DashboardContactsController;
+use App\Http\Controllers\DashboardProjectsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortofolioController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +28,14 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', function() {
+    return view('dashboard.index');
+})->middleware('auth');
+
+Route::resource('/dashboard/aboutme', DashboardAboutController::class)->middleware('auth');
+
+Route::resource('/dashboard/projects', DashboardProjectsController::class)->middleware('auth');
+
+Route::resource('/dashboard/contacts', DashboardContactsController::class)->middleware('auth');
 
 // jangan lupa href dijadikan {{ url(..) }}

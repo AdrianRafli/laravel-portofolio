@@ -13,4 +13,9 @@ class Project extends Model
         'image', 'name', 'description', 'tech_stack', 'github_link', 'demo_link',
     ];
 
+    // public function getRouteKeyName()
+    // {
+    //     return 'slug';
+    // }
+
 }
