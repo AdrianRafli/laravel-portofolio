@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
 class DashboardProjectsController extends Controller
@@ -23,7 +24,7 @@ class DashboardProjectsController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.projects.create');
     }
 
     /**
@@ -31,7 +32,17 @@ class DashboardProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'required|max:255',
+            'slug' => 'required|unique:projects',
+            'description' => 'required',
+            'tech_stack' => 'required|max:255',
+            'github_link' => 'required',
+            'demo_link' => 'required'
+        ]);
+
+        Project::create($validateData);
+        return redirect('dashboard/projects')->with('success', 'New Project has been added!');
     }
 
     /**
@@ -67,4 +78,5 @@ class DashboardProjectsController extends Controller
     {
         //
     }
+
 }
