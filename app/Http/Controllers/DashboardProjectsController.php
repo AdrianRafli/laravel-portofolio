@@ -42,6 +42,7 @@ class DashboardProjectsController extends Controller
         ]);
 
         Project::create($validateData);
+
         return redirect('dashboard/projects')->with('success', 'New Project has been added!');
     }
 
@@ -60,7 +61,10 @@ class DashboardProjectsController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('dashboard.projects.edit', [
+            'project' => $project,
+            'projects' => Project::all()
+        ]);
     }
 
     /**
@@ -68,7 +72,24 @@ class DashboardProjectsController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'tech_stack' => 'required|max:255',
+            'github_link' => 'required',
+            'demo_link' => 'required'
+        ];
+
+        if ($request->slug != $project->slug) {
+            $rules['slug'] = 'required|unique:projects';
+        }
+
+        $validateData = $request->validate($rules);
+
+        Project::where('id', $project->id)
+                ->update($validateData);
+        
+        return redirect('dashboard/projects')->with('success', 'Project has been updated!');
     }
 
     /**
@@ -76,7 +97,8 @@ class DashboardProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        Project::destroy($project->id);
+        return redirect('dashboard/projects')->with('success', 'Project has been deleted!');
     }
 
 }
