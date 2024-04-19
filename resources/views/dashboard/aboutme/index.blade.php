@@ -12,7 +12,7 @@
     @endif
 
     <div class="col-lg-9">
-      <table class="table">
+      <table class="table table-responsive">
         <tbody>
           <tr>
             <td>Name</td>

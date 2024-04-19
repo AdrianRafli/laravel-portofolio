@@ -12,7 +12,9 @@ class DashboardContactsController extends Controller
      */
     public function index()
     {
-        return view('dashboard.contacts.index');
+        return view('dashboard.contacts.index', [
+            'contacts' => Contact::all()
+        ]);
     }
 
     /**
@@ -44,7 +46,10 @@ class DashboardContactsController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return view('dashboard.contacts.edit', [
+            'contact' => $contact,
+            'contacts' => Contact::all()
+        ]);
     }
 
     /**
@@ -52,7 +57,16 @@ class DashboardContactsController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $validateData = $request->validate([
+            'image' => 'required|max:255',
+            'platform' => 'required|max:255',
+            'link' => 'required|max:255',
+        ]);
+
+        Contact::where('id', $contact->id)
+                ->update($validateData);
+
+        return redirect('dashboard/contacts')->with('success', 'Project has been updated!');
     }
 
     /**
