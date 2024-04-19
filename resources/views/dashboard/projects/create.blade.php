@@ -75,10 +75,5 @@
             preSlug = preSlug.replace(/ /g,"-");
             slug.value = preSlug.toLowerCase();
         })
-        
-        // tambahkan ke halaman yang menggunakan trix editor
-        // document.addEventListener('trix-file-accept', function(e) {
-        //     e.preventDefault();
-        // });
     </script>
 @endsection

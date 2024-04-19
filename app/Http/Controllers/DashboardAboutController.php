@@ -12,7 +12,10 @@ class DashboardAboutController extends Controller
      */
     public function index()
     {
-        return view('dashboard.about-me.index');
+        // return AboutMe::all();
+        return view('dashboard.aboutme.index', [
+            'aboutMe' => AboutMe::first()
+        ]);
     }
 
     /**
@@ -44,7 +47,11 @@ class DashboardAboutController extends Controller
      */
     public function edit(AboutMe $aboutMe)
     {
-        //
+        $aboutMe = AboutMe::first();
+        return view('dashboard.aboutme.edit', compact('aboutMe'));
+        // return view('dashboard.aboutme.edit', [
+        //     'aboutMe' => $aboutMe
+        // ]);
     }
 
     /**
@@ -52,7 +59,27 @@ class DashboardAboutController extends Controller
      */
     public function update(Request $request, AboutMe $aboutMe)
     {
-        //
+        try{
+            $aboutMe = AboutMe::first();
+
+            $validateData = $request->validate([
+                'name' => 'required|max:255',
+                'job' => 'required|max:255',
+                'short_description' => 'required|max:255',
+                'description' => 'required'
+            ]);
+    
+            // dd($validateData, $aboutMe->toArray());
+    
+            // $aboutMe->update($validateData);
+            $aboutMe->where('id', $aboutMe->id)
+                    ->update($validateData);
+            
+            return redirect('dashboard/aboutme')->with('success', 'About Me has been updated!');
+        } catch (\Exception $e) {
+            // Jika terjadi kesalahan, tangkap eksepsi dan cetak pesan kesalahan
+            return back()->with('error', 'An error occurred while updating the About Me information: ' . $e->getMessage());
+        }
     }
 
     /**
