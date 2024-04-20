@@ -66,7 +66,7 @@ class DashboardContactsController extends Controller
         Contact::where('id', $contact->id)
                 ->update($validateData);
 
-        return redirect('dashboard/contacts')->with('success', 'Project has been updated!');
+        return redirect('dashboard/contacts')->with('success', 'Contact has been updated!');
     }
 
     /**
