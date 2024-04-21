@@ -5,6 +5,7 @@
         <h1 class="h2">Edit Contact</h1>
     </div>
 
+
     <div class="col-lg-8 mb-5">
         <form method="POST" action="/dashboard/contacts/{{ $contact->id }}">
             @method('put')

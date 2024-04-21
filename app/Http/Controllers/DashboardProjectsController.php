@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardProjectsController extends Controller
 {
@@ -38,8 +39,13 @@ class DashboardProjectsController extends Controller
             'description' => 'required',
             'tech_stack' => 'required|max:255',
             'github_link' => 'required',
-            'demo_link' => 'required'
+            'demo_link' => 'required',
+            'image' => 'image|file|max:1024'
         ]);
+
+        if($request->file('image')) {
+            $validateData['image'] = $request->file('image')->store('project-images');
+        }
 
         Project::create($validateData);
 
@@ -77,14 +83,23 @@ class DashboardProjectsController extends Controller
             'description' => 'required',
             'tech_stack' => 'required|max:255',
             'github_link' => 'required',
-            'demo_link' => 'required'
+            'demo_link' => 'required',
+            'image' => 'image|file|max:1024'
         ];
 
+        
         if ($request->slug != $project->slug) {
             $rules['slug'] = 'required|unique:projects';
         }
-
+        
         $validateData = $request->validate($rules);
+        
+        if($request->file('image')) {
+            if($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validateData['image'] = $request->file('image')->store('project-images');
+        }
 
         Project::where('id', $project->id)
                 ->update($validateData);
@@ -97,6 +112,10 @@ class DashboardProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
+        if($project->image) {
+            Storage::delete($project->image);
+        }
+
         Project::destroy($project->id);
         return redirect('dashboard/projects')->with('success', 'Project has been deleted!');
     }

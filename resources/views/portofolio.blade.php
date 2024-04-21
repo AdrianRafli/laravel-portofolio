@@ -61,7 +61,7 @@
                 <div class="project card shadow">
                     <div class="row">
                         <div class="col-lg-9 col-sm-9 card-img">
-                            <img src="/img/project/{{ $project->image }}" alt="project pemilos">
+                            <img src="{{ asset('storage/' . $project->image) }}" alt="project">
                         </div>
                         <div class="col-lg-3 col-sm-3 card-body text-center">
                             <h5>{{ $project->name }}</h5>
