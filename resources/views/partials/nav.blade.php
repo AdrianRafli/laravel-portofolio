@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+<nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
     <div class="container py-3">
       <a class="navbar-brand fw-bold" href="/">adrianrafli</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

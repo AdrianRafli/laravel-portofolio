@@ -8,10 +8,10 @@
                 <h1>{{ $aboutMe->job }}</h1>
                 <h6>Hi, i'm <b>{{ $aboutMe->name }}</b>. {!! $aboutMe->short_description !!}</h6>
                 <div class="hero-contact">
-                    <a href="#">
+                    <a href="https://www.linkedin.com/in/adrianrafli/">
                         <i class="bi bi-linkedin"></i>
                     </a>
-                    <a href="#">
+                    <a href="https://github.com/AdrianRafli">
                         <i class="bi bi-github"></i>
                     </a>
                 </div>
@@ -42,7 +42,7 @@
             <div class="col-lg-6 col-sm-12 about-text">
                 <h5>About Me</h5>
                 <h4>{!! $aboutMe->short_description !!}</h4>
-                <p>{{ $aboutMe->description }}</p>
+                <p>{{ strip_tags($aboutMe->description) }}</p>
             </div>
         </div>
     </div>
